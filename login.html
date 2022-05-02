@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn Page</title>
+     <style>
+          input{
+            display: block;
+            margin: auto;
+            width: 70%;
+            margin-bottom: 15px;
+        }
+ #container{
+           width:35%;
+           height:300px;
+           margin: auto;
+           border: 2px solid black;
+        }
+        h1{
+          text-align: center;
+        }
+     </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Login To Access</h1>
+        <form id="form">
+            <input type="text" id="email" placeholder="enter email">
+            <input type="text" id="password" placeholder="enter password">
+            <input type="submit">
+        </form>
+    </div>
+  
+</body>
+</html>
+
+<script>
+   var signUpData = JSON.parse(localStorage.getItem("signUpData"))
+   //console.log(logInData)
+
+   var form = document.querySelector("#form")
+   form.addEventListener("submit",submitfun)
+   //var logArr=[];
+   function submitfun()
+    {
+        event.preventDefault()
+        var logObj={
+            personEmail:form.email.value,
+            personPassword:form.password.value
+        }
+           //logArr.push(logObj)
+        //  console.log(logArr)
+        if(signUpData == null)
+         {
+             alert("Please Create you account")
+         }
+        else{
+            for(var i = 0;i<signUpData.length;i++)
+               {
+                if(signUpData[i].personEmail == logObj.personEmail && signUpData[i].personPassword == logObj.personPassword)
+               {
+                alert("Sign in successful")
+                window.location.href="mens.html";
+                break;
+               }
+               else{
+                alert("Please fill correct information")
+                break;
+                }
+         }
+        
+         
+        }
+       
+
+        console.log(logArr)
+    }
+
+
+
+</script>
